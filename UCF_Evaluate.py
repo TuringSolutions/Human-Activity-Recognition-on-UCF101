@@ -37,7 +37,7 @@ action = PredictAction(file, y, model, base_model)
 print(action)
     
 ################# Making a prediction on batch of videos ################
-predict, actual = PredictOnBatch(test_videos[0:100], y, base_model, model, videos_dir=path+'/UCF-101')
+predict, actual = PredictOnBatch(test_videos, y, base_model, model, videos_dir=path+'/UCF-101')
 # checking the accuracy of the predicted tags
 acc = accuracy_score(predict, actual)*100
 print(acc)

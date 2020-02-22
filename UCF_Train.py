@@ -38,7 +38,11 @@ train.head()
 X = ReadFrames(train, frames_dir=path+'/train_1')
 #Creating the test set and validation set.
 X_train, X_test, y_train, y_test = DatasetSplit(train, X)
-
+#delete the variable X to save the space.
+del X
 ################### Train the Model ##########################
 X_train, X_test = VGG16Model(X_train, X_test)
 history = UCFModel_Train(X_train, y_train, X_test, y_test, epochs=200, ckpt_name='UCF_weights.h5')
+
+
+

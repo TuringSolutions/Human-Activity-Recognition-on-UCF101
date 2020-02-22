@@ -66,8 +66,8 @@ def VGG16Model(X_train, X_test):
     X_test = base_model.predict(X_test)
     print(X_test.shape)
     # reshaping the training as well as validation frames in single dimension
-    X_train = X_train.reshape(59075, 7*7*512)
-    X_test = X_test.reshape(14769, 7*7*512)
+    X_train = X_train.reshape(round(len(X_train)), 7*7*512)
+    X_test = X_test.reshape(round(len(X_test)), 7*7*512)
     # normalizing the pixel values
     max = X_train.max()
     X_train = X_train/max
