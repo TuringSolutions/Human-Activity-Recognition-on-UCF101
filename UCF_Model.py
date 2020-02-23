@@ -57,6 +57,8 @@ def DatasetSplit(train, X):
     return X_train, X_test, y_train, y_test 
 
 def VGG16Model(X_train, X_test):
+    """ Intialize the Pre-trained VGG16 model, extract the features for given input, flatten
+        the input, normalize them and then return a Numpy array."""
     # creating the base model of pre-trained VGG16 model
     base_model = VGG16(weights='imagenet', include_top=False)
     # extracting features for training frames
