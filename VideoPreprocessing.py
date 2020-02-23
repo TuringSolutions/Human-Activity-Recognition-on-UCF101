@@ -124,7 +124,7 @@ def FrameExtractor(test_videos, index=None, frames_dir='temp', videos_dir='UCF-1
     
 def LoadImages(frames_dir='temp'):
     """ Read the frames from the given directory process them and make list of all the frames
-        which belongs to a video, convert teh list into Numpy array and return that array."""
+        which belongs to a video, convert the list into Numpy array and return that array."""
     # reading all the frames from temp folder
     images = glob(frames_dir+"/*.jpg")
     prediction_images = []
