@@ -41,13 +41,13 @@ def ReadFrames(train, frames_dir):
     X.shape
     return X
 
-def DatasetSplit(train, X):
+def DatasetSplit(X, y):
     #Creating the test set and validation set.
     # separating the target
     """ To create the validation set, we need to make sure that the distribution of each class is similar 
         in both training and validation sets. stratify = y (which is the class or tags of each frame) keeps 
         the similar distribution of classes in both the training as well as the validation set."""
-    y = train['class']
+    
     # creating the training and validation set
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.2, stratify = y)
     

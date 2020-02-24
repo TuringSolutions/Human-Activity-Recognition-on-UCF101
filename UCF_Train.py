@@ -37,7 +37,8 @@ train.head()
 
 X = ReadFrames(train, frames_dir=path+'/train_1')
 #Creating the test set and validation set.
-X_train, X_test, y_train, y_test = DatasetSplit(train, X)
+y = train['class']
+X_train, X_test, y_train, y_test = DatasetSplit(X, y)
 #delete the variable X to save the space.
 del X
 ################### Train the Model ##########################
