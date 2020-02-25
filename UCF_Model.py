@@ -104,10 +104,10 @@ def UCFModel_Train(X_train, y_train, X_test, y_test, epochs, ckpt_name='UCF_weig
                         callbacks=[ckpt], batch_size=128)
     return history
 
-def PredictAction(file, y, model, base_model):
+def PredictAction(file, y, model, base_model, path):
     name = file.split('/')[1]
-    _ = FrameExtractor(name, frames_dir='UCF/temp', videos_dir=file.split('/')[0])
-    prediction_images = LoadImages(frames_dir='UCF/temp')
+    _ = FrameExtractor(name, frames_dir=path+'/temp', videos_dir=file.split('/')[0])
+    prediction_images = LoadImages(frames_dir=path+'/temp')
     # extracting features using pre-trained model
     prediction_images = base_model.predict(prediction_images)
     # converting features in one dimensional array

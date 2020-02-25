@@ -13,6 +13,7 @@ from glob import glob
 from tqdm import tqdm
 import os
 import numpy as np
+import shutil
 
 def VideoNameDF(name, dir):
     """ We will now store the name of videos in a dataframe.
@@ -99,16 +100,20 @@ def FrameExtractor(test_videos, index=None, frames_dir='temp', videos_dir='UCF-1
         index=0
     if index==None:
         raise ValueError('Invalid value for `argument` index.')
-    count = 0
+    count = 0   
+    #Setting the permission and removing `frames_dir` directory which may contain old files.
+    #os.chmod(frames_dir, 0o777)
+    shutil.rmtree(frames_dir, ignore_errors=True)
+    #Creating the new directory
     os.makedirs(frames_dir, exist_ok=True)
     videoFile = test_videos[index]
     # capturing the video from the given path
     cap = cv2.VideoCapture(videos_dir+'/'+videoFile.split(' ')[0])   
     frameRate = cap.get(5) #frame rate
     # removing all other files from the temp folder
-    files = glob('temp/*')
-    for f in files:
-        os.remove(f)
+    # files = glob(frames_dir)
+    # for f in files:
+    #     os.remove(f)
     while(cap.isOpened()):
         frameId = cap.get(1) #current frame number
         #print(frameId)
